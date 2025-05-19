@@ -1,0 +1,33 @@
+-- Create Schema
+CREATE SCHEMA IF NOT EXISTS atom;
+
+-- Users Table
+CREATE TABLE IF NOT EXISTS atom.users (
+  id SERIAL PRIMARY KEY,
+  phone_number VARCHAR(20) UNIQUE NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Payments Table
+CREATE TABLE IF NOT EXISTS atom.payments (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES atom.users(id) ON DELETE CASCADE,
+  amount NUMERIC(10, 2) NOT NULL,
+  transaction_id VARCHAR(100) UNIQUE NOT NULL,
+  provider VARCHAR(50) NOT NULL,
+  status VARCHAR(20) NOT NULL DEFAULT 'pending',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tokens Table
+CREATE TABLE IF NOT EXISTS atom.tokens (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES atom.users(id) ON DELETE CASCADE,
+  token VARCHAR(10) UNIQUE NOT NULL,
+  valid_until TIMESTAMP NOT NULL,
+  is_active BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- DROP SCHEMA
+DROP SCHEMA IF EXISTS atom;

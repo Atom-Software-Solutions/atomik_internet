@@ -1,0 +1,23 @@
+{
+  "name": "atomik_internet",
+  "version": "1.0.0",
+  "description": "Internet Redistribution System",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "server": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Atom-Software-Solutions/atomik_internet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Atom-Software-Solutions/atomik_internet/issues"
+  },
+  "homepage": "https://github.com/Atom-Software-Solutions/atomik_internet#readme"
+}
